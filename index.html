@@ -31,7 +31,7 @@
       border: none;
       color: white;
       padding: 15px 30px;
-      margin-top: 30px;
+      margin: 15px 10px 0;
       font-size: 20px;
       cursor: pointer;
       border-radius: 5px;
@@ -72,6 +72,7 @@
 
   <div id="main-content">
     <button class="button" onclick="launchMinecraft()">Play</button>
+    <button class="button" onclick="launchHive()">Multiplayer</button>
 
     <div class="fake-game">
       <h2>Sample Blocks</h2>
@@ -89,22 +90,38 @@
   <script>
     function launchMinecraft() {
       document.getElementById("main-content").style.display = "none";
+      document.getElementById("loading-screen").innerHTML = `
+        <h2>💡 Generating terrain...</h2>
+        <p style="font-size: 20px;">⛏️ Loading world chunks...</p>
+      `;
       document.getElementById("loading-screen").style.display = "block";
 
-      // Launch Minecraft after 3 seconds
       setTimeout(() => {
         window.location.href = "minecraft://";
-
-        // After launching Minecraft, bring back the page
         setTimeout(() => {
           document.getElementById("main-content").style.display = "block";
           document.getElementById("loading-screen").style.display = "none";
         }, 1000);
+      }, 3000);
+    }
 
+    function launchHive() {
+      document.getElementById("main-content").style.display = "none";
+      document.getElementById("loading-screen").innerHTML = `
+        <h2>🌐 Connecting to Multiplayer...</h2>
+        <p style="font-size: 20px;">🐝 Joining The Hive server</p>
+      `;
+      document.getElementById("loading-screen").style.display = "block";
+
+      setTimeout(() => {
+        window.location.href = "minecraft://?addExternalServer=The%20Hive|geo.hivebedrock.network:19132";
+        setTimeout(() => {
+          document.getElementById("main-content").style.display = "block";
+          document.getElementById("loading-screen").style.display = "none";
+        }, 1000);
       }, 3000);
     }
   </script>
 
 </body>
 </html>
-
