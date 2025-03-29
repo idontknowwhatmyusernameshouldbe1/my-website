@@ -35,4 +35,76 @@
       font-size: 20px;
       cursor: pointer;
       border-radius: 5px;
-      box-shadow: 0 4px
+      box-shadow: 0 4px #2f582f;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    .fake-game {
+      margin-top: 40px;
+      font-size: 24px;
+      color: #222;
+    }
+
+    .dirt-block {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background: url('https://i.imgur.com/2G7r5Kd.png') no-repeat center/cover;
+      margin: 10px;
+    }
+
+    #loading-screen {
+      display: none;
+      margin-top: 50px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>🟫 BlockCraft</h1>
+    <p>Definitely Not Minecraft™</p>
+  </div>
+
+  <div id="main-content">
+    <button class="button" onclick="launchMinecraft()">Play</button>
+
+    <div class="fake-game">
+      <h2>Sample Blocks</h2>
+      <div class="dirt-block"></div>
+      <div class="dirt-block"></div>
+      <div class="dirt-block"></div>
+    </div>
+  </div>
+
+  <div id="loading-screen">
+    <h2>💡 Generating terrain...</h2>
+    <p style="font-size: 20px;">⛏️ Loading world chunks...</p>
+  </div>
+
+  <script>
+    function launchMinecraft() {
+      document.getElementById("main-content").style.display = "none";
+      document.getElementById("loading-screen").style.display = "block";
+
+      // Launch Minecraft after 3 seconds
+      setTimeout(() => {
+        window.location.href = "minecraft://";
+
+        // After launching Minecraft, bring back the page
+        setTimeout(() => {
+          document.getElementById("main-content").style.display = "block";
+          document.getElementById("loading-screen").style.display = "none";
+        }, 1000);
+
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
+
