@@ -46,4 +46,55 @@
       margin-top: 50px;
       font-size: 24px;
     }
-  </style
+
+    .fake-game {
+      margin-top: 40px;
+      font-size: 24px;
+      color: #222;
+    }
+
+    .dirt-block {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background: url('https://i.imgur.com/2G7r5Kd.png') no-repeat center/cover;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>🟫 BlockCraft</h1>
+    <p>Definitely Not Minecraft™</p>
+  </div>
+
+  <div id="main-content">
+    <button class="button" onclick="launchMinecraft()">Play</button>
+
+    <div class="fake-game">
+      <h2>Sample Blocks</h2>
+      <div class="dirt-block"></div>
+      <div class="dirt-block"></div>
+      <div class="dirt-block"></div>
+    </div>
+  </div>
+
+  <div id="loading-screen" style="display: none;">
+    <h2>💡 Generating terrain...</h2>
+    <p style="font-size: 20px;">⛏️ Loading world chunks...</p>
+  </div>
+
+  <script>
+    function launchMinecraft() {
+      document.getElementById("main-content").style.display = "none";
+      document.getElementById("loading-screen").style.display = "block";
+
+      setTimeout(() => {
+        window.location.href = "minecraft://";
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
