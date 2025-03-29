@@ -42,7 +42,7 @@
       background-color: #45a049;
     }
 
-    .fake-game {
+    .fake-game, .fake-mc {
       margin-top: 40px;
       font-size: 24px;
       color: #222;
@@ -56,10 +56,22 @@
       margin: 10px;
     }
 
-    #loading-screen {
+    #loading-screen, #blockcraft-fake {
       display: none;
       margin-top: 50px;
       font-size: 24px;
+    }
+
+    .blocky {
+      font-family: 'Courier New', monospace;
+      font-size: 30px;
+      color: #444;
+    }
+
+    .back-button {
+      margin-top: 30px;
+      font-size: 16px;
+      background-color: #333;
     }
   </style>
 </head>
@@ -73,6 +85,7 @@
   <div id="main-content">
     <button class="button" onclick="launchMinecraft()">Play</button>
     <button class="button" onclick="launchHive()">Multiplayer</button>
+    <button class="button" onclick="playOurVersion()">Play Our Version</button>
 
     <div class="fake-game">
       <h2>Sample Blocks</h2>
@@ -85,6 +98,13 @@
   <div id="loading-screen">
     <h2>💡 Generating terrain...</h2>
     <p style="font-size: 20px;">⛏️ Loading world chunks...</p>
+  </div>
+
+  <div id="blockcraft-fake">
+    <h2 class="blocky">🧱 BlockCraft: Ultra Cube Mode</h2>
+    <p class="blocky">Now entering The Nether... wait... nevermind.</p>
+    <p class="blocky">Achievement Get: Wasting Time</p>
+    <button class="button back-button" onclick="goBack()">Return to Title Screen</button>
   </div>
 
   <script>
@@ -120,6 +140,16 @@
           document.getElementById("loading-screen").style.display = "none";
         }, 1000);
       }, 3000);
+    }
+
+    function playOurVersion() {
+      document.getElementById("main-content").style.display = "none";
+      document.getElementById("blockcraft-fake").style.display = "block";
+    }
+
+    function goBack() {
+      document.getElementById("blockcraft-fake").style.display = "none";
+      document.getElementById("main-content").style.display = "block";
     }
   </script>
 
