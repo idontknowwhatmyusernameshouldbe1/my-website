@@ -3,7 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <title>BlockCraft - Totally Real Minecraft</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #7ec850;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #5a7d39;
+      padding: 20px;
+      box-shadow: 0 4px #40602a;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin: 0;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px #000;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      margin: 15px 10px 0;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      box-shadow: 0 4px #2f582f;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    .dirt-block {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background: url('https://i.imgur.com/2G7r5Kd.png') no-repeat center/cover;
+      margin: 10px;
+    }
+
+    #scratch-game {
+      display: none;
+      margin-top: 40px;
+    }
+
+    iframe {
+      border: 4px solid #333;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
 
@@ -13,9 +69,7 @@
   </div>
 
   <div id="main-content">
-    <button class="button" onclick="launchMinecraft()">Play</button>
-    <button class="button" onclick="launchHive()">Multiplayer</button>
-    <button class="button" onclick="playOurVersion()">Play Our Version</button>
+    <button class="button" onclick="playScratch()">Play Our Version</button>
 
     <div class="fake-game">
       <h2>Sample Blocks</h2>
@@ -25,60 +79,22 @@
     </div>
   </div>
 
-  <div id="loading-screen">
-    <h2>💡 Generating terrain...</h2>
-    <p style="font-size: 20px;">⛏️ Loading world chunks...</p>
-  </div>
-
-  <div id="blockcraft-fake">
-    <h2 class="blocky">🧱 BlockCraft: Ultra Cube Mode</h2>
-    <p class="blocky">Now entering The Nether... wait... nevermind.</p>
-    <p class="blocky">Achievement Get: Wasting Time</p>
-    <button class="button back-button" onclick="goBack()">Return to Title Screen</button>
+  <div id="scratch-game">
+    <h2>🎮 BlockCraft: Scratch Edition</h2>
+    <iframe src="https://scratch.mit.edu/projects/10128407/embed" allowtransparency="true"
+      width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+    <br><br>
+    <button class="button" onclick="goBack()">Back to Main Menu</button>
   </div>
 
   <script>
-    function launchMinecraft() {
+    function playScratch() {
       document.getElementById("main-content").style.display = "none";
-      document.getElementById("loading-screen").innerHTML = `
-        <h2>💡 Generating terrain...</h2>
-        <p style="font-size: 20px;">⛏️ Loading world chunks...</p>
-      `;
-      document.getElementById("loading-screen").style.display = "block";
-
-      setTimeout(() => {
-        window.location.href = "minecraft://";
-        setTimeout(() => {
-          document.getElementById("main-content").style.display = "block";
-          document.getElementById("loading-screen").style.display = "none";
-        }, 1000);
-      }, 3000);
-    }
-
-    function launchHive() {
-      document.getElementById("main-content").style.display = "none";
-      document.getElementById("loading-screen").innerHTML = `
-        <h2>🌐 Connecting to Multiplayer...</h2>
-        <p style="font-size: 20px;">🐝 Joining The Hive server</p>
-      `;
-      document.getElementById("loading-screen").style.display = "block";
-
-      setTimeout(() => {
-        window.location.href = "minecraft://?addExternalServer=The%20Hive|geo.hivebedrock.network:19132";
-        setTimeout(() => {
-          document.getElementById("main-content").style.display = "block";
-          document.getElementById("loading-screen").style.display = "none";
-        }, 1000);
-      }, 3000);
-    }
-
-    function playOurVersion() {
-      document.getElementById("main-content").style.display = "none";
-      document.getElementById("blockcraft-fake").style.display = "block";
+      document.getElementById("scratch-game").style.display = "block";
     }
 
     function goBack() {
-      document.getElementById("blockcraft-fake").style.display = "none";
+      document.getElementById("scratch-game").style.display = "none";
       document.getElementById("main-content").style.display = "block";
     }
   </script>
